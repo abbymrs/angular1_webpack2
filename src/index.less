@@ -1,0 +1,43 @@
+.container {
+    margin-top: 40px;
+}
+
+.header-nav {
+    position: fixed;
+    width: 100%;
+    z-index: 2;
+    background: #fafafa;
+    border: 1px solid #e7e7e7;
+}
+
+.ui-wrap {
+    margin-top: 50px;
+}
+
+li {
+    list-style: none;
+}
+
+.red {
+    color: red;
+}
+
+.nav-header-ul {
+    position: relative;
+    ul a:hover {
+        color: #555;
+    }
+    .log-wrap {
+        position: absolute;
+        top: 16px;
+        right: 20px;
+        z-index: 10;
+        span {
+            cursor: pointer;
+            color: #777;
+            &:hover {
+                color: #555;
+            }
+        }
+    }
+}

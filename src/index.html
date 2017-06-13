@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <base href="/">
+    <title>Document</title>
+</head>
+
+<body ng-app="app" ng-controller="ctrl as vm">
+    <div class="container">
+        <nav class="navbar navbar-default navbar-fixed-top nav-header-ul">
+            <ul class="nav navbar-nav header-nav">
+                <li ng-class="{'active': vm.currentUrl=='home'}" ng-click="vm.changeState();">
+                    <a ui-sref="cssp.home">Home</a>
+                </li>
+                <li ng-class="{'active': vm.currentUrl=='profile'}" ng-click="vm.changeState()">
+                    <a ui-sref="cssp.profile">Profile</a>
+                </li>
+                <li ng-class="{'active': vm.currentUrl=='messages'}" ng-click="vm.changeState()">
+                    <a ui-sref="cssp.messages">Messages</a>
+                </li>
+            </ul>
+            <div class="log-wrap">
+                <span class="singin">Login</span> |
+                <span class="signup">Register</span>
+            </div>
+        </nav>
+
+        <div ui-view class="ui-wrap"></div>
+    </div>
+</body>
+
+</html>

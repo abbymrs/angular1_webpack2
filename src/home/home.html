@@ -1,0 +1,27 @@
+<div class="home">
+    <form class="myform">
+        <div class="form-group">
+            <label>Name: </label>
+            <input type="text" class="form-control" name="username" ng-model="vm.user.name">
+            <div class="red" ng-if="!vm.valid && vm.user.name.length > vm.maxLength">{{vm.errorMsg}}</div>
+        </div>
+        <div class="form-group">
+            <label>Country: </label>
+            <input type="text" class="form-control" name="country" ng-model="vm.user.country">
+            <div class="red" ng-if="!vm.valid && vm.user.country.length > vm.maxLength">{{vm.errorMsg}}</div>
+        </div>
+        <div class="form-group">
+            <label>City: </label>
+            <input type="text" class="form-control" name="city" ng-model="vm.user.city">
+            <div class="red" ng-if="!vm.valid && vm.user.city.length > vm.maxLength">{{vm.errorMsg}}</div>
+        </div>
+        <div class="form-group">
+            <label>PostalCode: </label>
+            <input type="text" class="form-control" name="code" ng-model="vm.user.code">
+            <div class="red" ng-if="!vm.valid && vm.user.code.length > vm.maxLength">{{vm.errorMsg}}</div>
+        </div>
+        <div class="form-group">
+            <input type="submit" class="btn btn-primary" value="Submit" ng-click="vm.confirm()">
+        </div>
+    </form>
+</div>
