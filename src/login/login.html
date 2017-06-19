@@ -1,0 +1,17 @@
+<div class="login">
+    <h2>{{vm.isLoginPage ? vm.logObj.login : vm.logObj.register}}</h2>
+    <form name="login" novalidate>
+        <div class="form-group">
+            <label for="name">User name: </label>
+            <input type="text" class="form-control" name="name" id="name" ng-model="vm.user.username">
+        </div>
+        <div class="form-group">
+            <label for="name">Password: </label>
+            <input type="password" class="form-control" name="psd" id="psd" ng-model="vm.user.psd">
+        </div>
+        <div class="form-group">
+            <input type="submit" ng-if="vm.isLoginPage" ng-click="vm.login(vm.user)" class="btn btn-primary" value="Login">
+            <input type="submit" ng-if="!vm.isLoginPage" ng-click="vm.register(vm.user)" class="btn btn-info" value="Register">
+        </div>
+    </form>
+</div>

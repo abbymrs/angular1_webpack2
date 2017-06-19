@@ -1,5 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const low = require('lowdb');
+let userDb = low('./data/user.json');
 
 var app = express();
 
@@ -16,7 +18,33 @@ app.listen(PORT, () => {
     console.log('server running on port: ' + PORT);
 });
 
-app.get('/api/process', (req, res) => {
-    console.log(process);
-    res.send(process.env).end();
+app.get('/api/login', (req, res) => {
+    var obj = {
+        status: 0,
+        mgs: 'user name or password is not correct!'
+    };
+    var name = req.query.username;
+    var psd = req.query.psd;
+    var user = userDb.find({ name: name }).value();
+    if (user && psd == user.psd) {
+        obj = {
+            status: 1,
+            mgs: 'login successfully!'
+        }
+    }
+    res.send(obj).end();
+});
+
+app.post('/api/register', (req, res) => {
+    var obj = {
+        status: 0,
+        mgs: 'error occurs!'
+    };
+    var user = req.body;
+    userDb.push(user).value();
+    obj = {
+        status: 1,
+        mgs: 'register successfully!'
+    }
+    res.send(obj).end();
 });
