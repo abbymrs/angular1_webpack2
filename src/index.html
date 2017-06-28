@@ -13,13 +13,13 @@
     <div class="container">
         <nav class="navbar navbar-default navbar-fixed-top nav-header-ul">
             <ul class="nav navbar-nav header-nav">
-                <li ng-class="{'active': vm.currentUrl=='home'}" ng-click="vm.changeState();">
+                <li ng-class="{'active': vm.$state.includes('cssp.home')}">
                     <a ui-sref="cssp.home">Home</a>
                 </li>
-                <li ng-class="{'active': vm.currentUrl=='profile'}" ng-click="vm.changeState()">
+                <li ng-class="{'active': vm.$state.includes('cssp.profile')}">
                     <a ui-sref="cssp.profile">Profile</a>
                 </li>
-                <li ng-class="{'active': vm.currentUrl=='messages'}" ng-click="vm.changeState()">
+                <li ng-class="{'active': vm.$state.includes('cssp.messages')}">
                     <a ui-sref="cssp.messages">Messages</a>
                 </li>
             </ul>

@@ -1,0 +1,8 @@
+<div class="pop-wrapper">
+    <div class="pop-content" ng-bind-html="content"></div>
+    <div class="pop-footer" ng-if="isShowBtn">
+        <button class="btn btn-primary" ng-click="confirm()">Confirm</button>
+        <button class="btn btn-danger" ng-click="cancel()">Cancel</button>
+    </div>
+</div>
+<div class="mask"></div>

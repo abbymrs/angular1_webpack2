@@ -29,7 +29,7 @@ app.get('/api/login', (req, res) => {
     if (user && psd == user.psd) {
         obj = {
             status: 1,
-            mgs: 'login successfully!'
+            msg: 'login successfully!'
         }
     }
     res.send(obj).end();
@@ -38,13 +38,16 @@ app.get('/api/login', (req, res) => {
 app.post('/api/register', (req, res) => {
     var obj = {
         status: 0,
-        mgs: 'error occurs!'
+        msg: 'error occurs!'
     };
+    var len = userDb.value().length;
     var user = req.body;
     userDb.push(user).value();
-    obj = {
-        status: 1,
-        mgs: 'register successfully!'
+    if (userDb.value().length > len) {
+        obj = {
+            status: 1,
+            msg: 'register successfully!'
+        };
     }
     res.send(obj).end();
 });

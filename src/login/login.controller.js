@@ -1,8 +1,9 @@
 class loginCtrl {
-    constructor($location, $state, apiService) {
+    constructor($location, $state, $timeout, apiService) {
         this.$location = $location;
         this.apiService = apiService;
         this.$state = $state;
+        this.$timeout = $timeout;
 
         this.user = {};
         this.logObj = {
@@ -11,6 +12,7 @@ class loginCtrl {
         };
         this.isLoginPage = true;
         this.isLogin = false;
+        this.msg = '';
 
         this.switchLogin();
     }
@@ -20,8 +22,15 @@ class loginCtrl {
 
     login(data) {
         this.apiService.login(data, res => {
-            this.isLogin = true;
-            this.$state.go('cssp.home');
+            if (res.status == 1) {
+                this.isLogin = true;
+                this.$timeout(_ => {
+                    this.$state.go('cssp.home');
+                }, 2000);
+            } else {
+                this.isLogin = false;
+            }
+            this.msg = res.msg;
         }, err => {
             console.log(err);
         });
@@ -29,12 +38,19 @@ class loginCtrl {
 
     register(data) {
         this.apiService.register(data, res => {
-            this.isLogin = true;
-            this.$state.go('cssp.home');
+            if (res.status == 1) {
+                this.isLogin = true;
+                this.$timeout(_ => {
+                    this.$state.go('cssp.home');
+                }, 2000);
+            } else {
+                this.isLogin = false;
+            }
+            this.msg = res.msg;
         }, err => {
             console.log(err);
         });
     }
 }
-loginCtrl.$inject = ['$location', '$state', 'apiService'];
+loginCtrl.$inject = ['$location', '$state', '$timeout', 'apiService'];
 export default loginCtrl;
