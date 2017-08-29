@@ -11,28 +11,7 @@
 
 <body ng-app="app" ng-controller="ctrl as vm">
     <div class="container">
-        <nav class="navbar navbar-default navbar-fixed-top nav-header-ul">
-            <ul class="nav navbar-nav header-nav">
-                <li ng-class="{'active': vm.$state.includes('cssp.home')}">
-                    <a ui-sref="cssp.home">Home</a>
-                </li>
-                <li ng-class="{'active': vm.$state.includes('cssp.profile')}">
-                    <a ui-sref="cssp.profile">Profile</a>
-                </li>
-                <li ng-class="{'active': vm.$state.includes('cssp.messages')}">
-                    <a ui-sref="cssp.messages">Messages</a>
-                </li>
-            </ul>
-            <div class="log-wrap">
-                <span class="singin">
-                    <a ui-sref="cssp.login">Login</a>
-                </span> |
-                <span class="signup">
-                    <a ui-sref="cssp.register">Register</a>
-                </span>
-            </div>
-        </nav>
-
+        <my-header></my-header>
         <div ui-view class="ui-wrap"></div>
     </div>
 </body>

@@ -1,10 +1,12 @@
 class loginCtrl {
-    constructor($location, $state, $timeout, apiService) {
+    constructor($location, $state, $timeout, $rootScope, apiService) {
         this.$location = $location;
         this.apiService = apiService;
         this.$state = $state;
         this.$timeout = $timeout;
-
+        this.$rootScope = $rootScope;
+    }
+    $onInit() {
         this.user = {};
         this.logObj = {
             login: 'Login',
@@ -25,12 +27,13 @@ class loginCtrl {
             if (res.status == 1) {
                 this.isLogin = true;
                 this.$timeout(_ => {
-                    this.$state.go('cssp.home');
+                    this.$state.go('cssp.profile', null, { reload: true });
                 }, 2000);
             } else {
                 this.isLogin = false;
             }
             this.msg = res.msg;
+            this.$rootScope.$emit('isLogin', this.isLogin);
         }, err => {
             console.log(err);
         });
@@ -52,5 +55,5 @@ class loginCtrl {
         });
     }
 }
-loginCtrl.$inject = ['$location', '$state', '$timeout', 'apiService'];
+loginCtrl.$inject = ['$location', '$state', '$timeout', '$rootScope', 'apiService'];
 export default loginCtrl;

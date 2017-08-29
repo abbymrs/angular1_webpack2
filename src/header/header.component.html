@@ -1,0 +1,22 @@
+<nav class="navbar navbar-default navbar-fixed-top nav-header-ul">
+    <ul class="nav navbar-nav header-nav">
+        <li ui-sref-active="active">
+            <a ui-sref="cssp.home">Home</a>
+        </li>
+        <li ui-sref-active="active">
+            <a ui-sref="cssp.profile">Profile</a>
+        </li>
+        <li ui-sref-active="active">
+            <a ui-sref="cssp.messages">Messages</a>
+        </li>
+    </ul>
+    <div class="log-wrap">
+        <span class="singin">
+            <a ui-sref="cssp.login" ng-if="!$ctrl.isLogin">Login</a>
+            <a href="javascript:;" ng-if="$ctrl.isLogin" ng-click="$ctrl.logout()">Logout</a>
+        </span> |
+        <span class="signup">
+            <a ui-sref="cssp.register">Register</a>
+        </span>
+    </div>
+</nav>

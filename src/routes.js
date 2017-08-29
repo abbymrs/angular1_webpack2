@@ -3,6 +3,7 @@ let router = function($stateProvider, $urlRouterProvider, $locationProvider) {
     $stateProvider
         .state('cssp', {
             url: '/cssp',
+            abstract: true,
             template: `
                 <div class="wrap">
                     <div ui-view></div>
@@ -40,7 +41,8 @@ let router = function($stateProvider, $urlRouterProvider, $locationProvider) {
             controllerAs: 'vm'
         })
 
-    $locationProvider.html5Mode(true);
+    // $locationProvider.html5Mode(true);
+    $locationProvider.hashPrefix('');
 }
 
 router.$inject = ['$stateProvider', '$urlRouterProvider', '$locationProvider'];

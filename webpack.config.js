@@ -73,7 +73,7 @@ module.exports = {
             jQuery: 'jquery',
             $: 'jquery'
         }),
-        // new HotModuleReplacementPlugin()
+        new HotModuleReplacementPlugin()
     ],
     resolve: {
         extensions: ['.js', '.json', '.css', '.vue'],
@@ -82,8 +82,8 @@ module.exports = {
         }
     },
     devServer: {
-        host: 'localhost',
-        port: 5000,
+        host: '192.168.0.109',
+        port: 4200,
         historyApiFallback: true,
         noInfo: true,
         watchOptions: {
